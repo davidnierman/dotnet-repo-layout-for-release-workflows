@@ -1,0 +1,43 @@
+<Project>
+  <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
+  
+  <PropertyGroup>
+	<ProductName>ProductNamer</ProductName> <!-- the external name of your project that can easliy be changed when marketing randomly asks you to change it!-->
+	<MainProjectName>Server</MainProjectName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+	<LangVersion>preview</LangVersion> <!--!James lives life on the edge-->
+	<SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage> <!-- blocks the message saying we are using the preview version-->
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	<!--ncrunch copies projects to different directories (by default) that are not inside the git root, so we need to tell gitinfo where to find the git directory-->
+	<GitInfoBaseDir Condition="'$(NCrunch)' == '1'">$(NCrunchOriginalSolutionDir)</GitInfoBaseDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+	<!--Order of figuring out the names is important-->
+	<PathSeperator>$([System.IO.Path]::DirectorySeparatorChar)</PathSeperator> <!--what is inside the [] is the class and the `::` after calls the method or property -->
+	<QualifiedProjectName>$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), $(MSBuildProjectDirectory)))</QualifiedProjectName> <!--ms build properties start with dollar sign $-->
+	<ProjectScopeName>$(QualifiedProjectName)</ProjectScopeName> <!-- It takes the line above^ and setting it to the project scope name-->
+	<ProjectScopeName Condition="$(QualifiedProjectName.IndexOf($(PathSeperator))) > 0">$(QualifiedProjectName.Substring(0,  $(QualifiedProjectName.IndexOf($(PathSeperator)))))</ProjectScopeName>
+	<QualifiedProjectName>$(QualifiedProjectName.Replace($(PathSeperator), ".").Replace('.$(ProjectScopeName)',''))</QualifiedProjectName>
+	<QualifiedProjectName>$(ProductName).$(QualifiedProjectName)</QualifiedProjectName>
+	<QualifiedProjectName Condition="$(QualifiedProjectName.EndsWith($(MainProjectName)))">$(ProductName)</QualifiedProjectName>
+	<ProjectType Condition="$(IsTestProject) == 'true'">test</ProjectType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+	<AssemblyName>$(QualifiedProjectName)</AssemblyName>
+	<RootNamespace>$(QualifiedProjectName)</RootNamespace>
+  </PropertyGroup>
+
+  <!--Build locations-->
+  <PropertyGroup>
+	<BaseBuildPath>$(SolutionDir)bld\</BaseBuildPath>
+	<BaseIntermediateOutputPath>$(BaseBuildPath)obj\$(QualifiedProjectName)</BaseIntermediateOutputPath>
+	<OutputPath Condition="$(ProjectType) == ''">$(BaseBuildPath)out\$(Configuration)\$(QualifiedProjectName)</OutputPath>
+	<OutputPath Condition="$(ProjectType) != ''">$(BaseBuildPath)out\$(Configuration)\$(ProjectType)\$(QualifiedProjectName)</OutputPath>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+</Project>

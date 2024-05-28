@@ -1,0 +1,23 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - 'main'
+      - 'releases/**'
+jobs:
+  ci-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set the sln to use
+        run: echo "slnfile=probable-goggles.sln" >> $GITHUB_ENV
+      - uses: actions/checkout@v4
+        with:
+            fetch-depth: ${{ github.event_name == 'pull_request' && 2 || 0 }}
+      - name: Restore dependencies
+        run: dotnet restore $slnfile
+      - name: Compile
+        run: dotnet build $slnfile
+      - name: Check formatting
+        run: dotnet format $slnfile --verify-no-changes
+      - name: Run tests
+        run: dotnet test $slnfile

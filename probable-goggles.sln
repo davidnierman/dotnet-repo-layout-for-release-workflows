@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B430E3F8-CF87-4307-845A-73026F48C2CE}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "src\Server\Server.csproj", "{6CB1FE83-C28D-4BDE-8CD2-A3CE94702C2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "src\Client\Client.csproj", "{38EDFB94-BE3F-49B9-BE1B-367DDDBBC204}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "src\Shared\Shared.csproj", "{3E43E61F-AA86-4E64-9FEC-37B23B16E555}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F2A9EE2-9F80-41C1-9919-2EFB9B2576BA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "src\Test\Test.csproj", "{8AD2CBCA-4055-48BC-9AA4-3EF2E231EA41}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CB1FE83-C28D-4BDE-8CD2-A3CE94702C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB1FE83-C28D-4BDE-8CD2-A3CE94702C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB1FE83-C28D-4BDE-8CD2-A3CE94702C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB1FE83-C28D-4BDE-8CD2-A3CE94702C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38EDFB94-BE3F-49B9-BE1B-367DDDBBC204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38EDFB94-BE3F-49B9-BE1B-367DDDBBC204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38EDFB94-BE3F-49B9-BE1B-367DDDBBC204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38EDFB94-BE3F-49B9-BE1B-367DDDBBC204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E43E61F-AA86-4E64-9FEC-37B23B16E555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E43E61F-AA86-4E64-9FEC-37B23B16E555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E43E61F-AA86-4E64-9FEC-37B23B16E555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E43E61F-AA86-4E64-9FEC-37B23B16E555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD2CBCA-4055-48BC-9AA4-3EF2E231EA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD2CBCA-4055-48BC-9AA4-3EF2E231EA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD2CBCA-4055-48BC-9AA4-3EF2E231EA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD2CBCA-4055-48BC-9AA4-3EF2E231EA41}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6CB1FE83-C28D-4BDE-8CD2-A3CE94702C2A} = {B430E3F8-CF87-4307-845A-73026F48C2CE}
+		{38EDFB94-BE3F-49B9-BE1B-367DDDBBC204} = {B430E3F8-CF87-4307-845A-73026F48C2CE}
+		{3E43E61F-AA86-4E64-9FEC-37B23B16E555} = {B430E3F8-CF87-4307-845A-73026F48C2CE}
+		{8AD2CBCA-4055-48BC-9AA4-3EF2E231EA41} = {B430E3F8-CF87-4307-845A-73026F48C2CE}
+	EndGlobalSection
+EndGlobal
